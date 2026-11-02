@@ -1,104 +1,187 @@
-# Eigenfaces Face Recognition Lab
+<div align="center">
 
-This repository contains a Jupyter/Google Colab notebook demonstrating the **Eigenfaces approach to face analysis using Principal Component Analysis (PCA)**.
+# 👤 Eigenfaces Face Recognition
 
-The notebook covers image loading and preprocessing, mean-face calculation, image normalization, PCA feature extraction, eigenface visualization, and explained-variance analysis.
+### PCA-Based Face Feature Extraction & Visualization
 
-## Repository Contents
+<p>
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/OpenCV-Image%20Processing-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV">
+  <img src="https://img.shields.io/badge/Scikit--learn-PCA-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" alt="Scikit-learn">
+  <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter">
+</p>
+
+**A hands-on implementation of the Eigenfaces technique using Principal Component Analysis (PCA).**
+
+</div>
+
+---
+
+## 📌 About the Project
+
+This project demonstrates how facial images can be processed and represented using the **Eigenfaces method**. It uses **Principal Component Analysis (PCA)** to reduce image dimensionality and extract important facial features.
+
+The notebook loads face images, preprocesses them, calculates the mean face, applies PCA, and visualizes the resulting eigenfaces and explained variance.
+
+> **Project scope:** The current notebook focuses on PCA-based feature extraction and visualization. It does not yet include a complete face-matching or classification system.
+
+---
+
+## ✨ Key Features
+
+<table>
+  <tr>
+    <td>🖼️ <b>Image Loading</b><br>Loads face images from the supplied dataset.</td>
+    <td>⚙️ <b>Preprocessing</b><br>Converts images to grayscale and resizes them to 64 × 64.</td>
+  </tr>
+  <tr>
+    <td>➗ <b>Mean Face</b><br>Calculates the average face from the training images.</td>
+    <td>🧠 <b>PCA Analysis</b><br>Extracts 30 principal components from normalized images.</td>
+  </tr>
+  <tr>
+    <td>👁️ <b>Eigenface Display</b><br>Visualizes the principal components as face images.</td>
+    <td>📊 <b>Variance Analysis</b><br>Plots the explained variance ratio.</td>
+  </tr>
+</table>
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|:--|:--|
+| Python | Main programming language |
+| NumPy | Numerical operations and arrays |
+| Pandas | Data handling |
+| OpenCV | Image loading and processing |
+| Matplotlib | Image and graph visualization |
+| Seaborn | Data visualization |
+| Plotly | Interactive visualization library |
+| Scikit-learn | Principal Component Analysis (PCA) |
+
+---
+
+## 📂 Project Structure
 
 ```text
-.
+Eigenfaces-Face-Recognition/
+│
 ├── Face_Recognition.ipynb
-├── Class_Images.zip                 # Dataset archive (provide separately)
+├── Class_Images.zip
 └── README.md
 ```
 
-> The notebook expects the dataset archive to be named `Class_Images.zip`. Update the upload step if your archive has a different name.
+### Dataset folder structure
 
-## Dataset Structure
-
-After extracting `Class_Images.zip`, the notebook expects this folder structure:
+After extracting `Class_Images.zip`, arrange the dataset as follows:
 
 ```text
 data/
 └── class_images/
-    ├── nonsmiling_cropped/   # Images used as training data
-    └── smiling_cropped/      # Images used as testing data
+    ├── nonsmiling_cropped/
+    └── smiling_cropped/
 ```
 
-The images are read in grayscale, resized to **64 × 64 pixels**, and flattened into one-dimensional feature vectors. The filename (without its extension) is stored as the image label.
+- `nonsmiling_cropped/` — training images
+- `smiling_cropped/` — testing images
 
-Make sure the archive contains the folders above. The dataset is not embedded in the notebook, so it must be supplied separately.
+The dataset archive must be supplied separately; it is not embedded in the notebook.
 
-## Requirements
+---
 
-The notebook uses:
+## 🚀 Getting Started
 
-- Python 3
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-- Plotly
-- OpenCV (`opencv-python`)
-- Scikit-learn
+### 1. Clone the repository
 
-Install the libraries locally with:
+```bash
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+cd YOUR-REPOSITORY
+```
+
+Replace the repository URL with your actual GitHub repository URL.
+
+### 2. Install dependencies
 
 ```bash
 pip install numpy pandas matplotlib seaborn plotly opencv-python scikit-learn
 ```
 
-## How to Run
+### 3. Prepare the dataset
 
-### Option 1: Google Colab
+Place `Class_Images.zip` where the notebook can access it.
 
-1. Upload `Face_Recognition.ipynb` to Google Colab.
-2. Run the import cells.
-3. When prompted, upload `Class_Images.zip`.
-4. Run the remaining cells in order.
-5. Review the generated face images, mean face, eigenfaces, and explained-variance plot.
+The notebook currently uses Google Colab's file-upload feature. If you run it locally in Jupyter, replace that upload cell with a local dataset path or extract the archive into the expected folder structure.
 
-### Option 2: Jupyter Notebook
+### 4. Run the notebook
 
-1. Clone or download this repository.
-2. Install the required libraries.
-3. Extract the dataset so that it follows the folder structure shown above.
-4. If running outside Google Colab, replace the `google.colab.files.upload()` dataset-upload cell with a local path to `Class_Images.zip` (or extract the archive manually into the expected `data/` directory).
-5. Open `Face_Recognition.ipynb` and run all cells from top to bottom.
+Open `Face_Recognition.ipynb` in **Google Colab** or **Jupyter Notebook**, then execute the cells in order.
 
-## Notebook Workflow
+---
 
-1. **Import libraries** – Load the Python libraries used for image processing, numerical operations, visualization, and PCA.
-2. **Load the dataset** – Upload and extract the ZIP archive.
-3. **Prepare images** – Read training images from `nonsmiling_cropped` and testing images from `smiling_cropped`.
-4. **Preprocess images** – Convert images to grayscale, resize them to 64 × 64, and flatten them into vectors.
-5. **Visualize sample images** – Display sample training and testing images with their filename-based labels.
-6. **Calculate the mean face** – Compute the average of the training image vectors.
-7. **Normalize images** – Subtract the mean face from the training and testing image vectors.
-8. **Apply PCA** – Fit PCA with 30 components on the normalized training data and transform the testing data.
-9. **Visualize eigenfaces** – Display the principal components as 64 × 64 eigenface images.
-10. **Analyze explained variance** – Plot the explained-variance ratio for the selected components.
+## 🔬 How It Works
 
-## Output
+| Step | Process | Description |
+|:--:|:--|:--|
+| 01 | Import libraries | Loads the required Python packages. |
+| 02 | Load dataset | Uploads and extracts the image archive. |
+| 03 | Preprocess images | Converts images to grayscale and resizes them to 64 × 64 pixels. |
+| 04 | Flatten images | Converts each image into a one-dimensional vector. |
+| 05 | Calculate mean face | Computes the average training image. |
+| 06 | Normalize images | Subtracts the mean face from each image vector. |
+| 07 | Apply PCA | Fits PCA with 30 components on the training data. |
+| 08 | Visualize eigenfaces | Displays principal components as 64 × 64 images. |
+| 09 | Analyze variance | Plots the explained variance ratio. |
 
-Running the notebook produces:
+---
+
+## 📈 Expected Outputs
+
+After running the notebook, you should see:
 
 - Sample training and testing face images
 - The calculated mean face
-- A comparison of an original image, mean face, and normalized image
-- Training and testing PCA feature matrices
+- Original, mean, and normalized image comparisons
+- PCA feature matrices for training and testing data
 - Visualizations of the first ten eigenfaces
-- A plot showing the explained variance ratio of the 30 PCA components
+- Explained-variance plot for the 30 PCA components
 
-## Important Note
+---
 
-This notebook demonstrates **PCA-based Eigenfaces feature extraction and visualization**. It does not currently implement a complete face-identification or face-classification stage: there is no classifier, matching-distance calculation, prediction step, or recognition-accuracy evaluation in the notebook.
+## ▶️ Run in Google Colab
 
-## Technologies Used
+<div align="center">
 
-`Python` · `NumPy` · `Pandas` · `OpenCV` · `Matplotlib` · `Seaborn` · `Plotly` · `Scikit-learn`
+<a href="https://colab.research.google.com/" target="_blank">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab">
+</a>
 
-## Author
+<p><i>Upload the notebook to Colab, provide the dataset when prompted, and run the cells.</i></p>
 
-Add your name and any course/lab details here.
+</div>
+
+---
+
+## 🔮 Future Improvements
+
+- Add a face-matching method using PCA feature vectors.
+- Implement a classifier for face identification.
+- Evaluate the model using suitable accuracy metrics.
+- Test the approach with additional face images.
+
+---
+
+## 👨‍💻 Author
+
+**Your Name**
+
+- GitHub: [Aryan2436](https://github.com/Aryan2436)
+
+---
+
+<div align="center">
+
+### ⭐ If you find this project useful, consider giving the repository a star!
+
+<sub>Built with Python, OpenCV, and Scikit-learn.</sub>
+
+</div>
